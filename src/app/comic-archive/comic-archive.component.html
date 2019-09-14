@@ -1,0 +1,8 @@
+<h2> Comics Archive </h2>
+<ul class = "Comics">
+    <li *ngFor="let comic of comics" (click)="onSelect(comic)">
+        <a routerLink="/comics/{{comic.id}}">
+            <span>{{comic.id}}</span> {{comic.title}}
+        </a>
+    </li>
+</ul>

@@ -1,0 +1,9 @@
+<div> 
+   <h2>{{comic.title | uppercase }} </h2>
+   <div><img src = {{comic.path}}></div>
+   <div>
+      <button (click) = "previousComic()"> Previous </button>
+      <button (click) = "randComic()"> Random </button> 
+      <button (click) = "nextComic()"> Next </button>
+   </div>
+</div>
