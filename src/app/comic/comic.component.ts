@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { ComicService } from '../comic.service'; 
 import { Comic } from '../comic'
+import { PARAMETERS } from '@angular/core/src/util/decorators';
 
 @Component({
   selector: 'app-comic',
@@ -23,18 +24,26 @@ export class ComicComponent implements OnInit {
     { }
 
   ngOnInit() {
-    this.getComic();
     this.comicService.getTotal()
       .subscribe( total => this.numComics = total); 
+    this.getComic();
 
   }
 
 
+
+
   getComic(){
     this.route.paramMap.subscribe(params=> { 
-      const curr_id = +params.get('id');  
-      this.comicService.getComic(curr_id)
-      .subscribe(comic => this.comic = comic);
+      const curr_id = +params.get('id'); 
+      if(!curr_id){
+        this.comicService.getComic(this.numComics)
+        .subscribe(comic => this.comic = comic);
+      }else{
+        this.comicService.getComic(curr_id)
+        .subscribe(comic => this.comic = comic);
+      }
+     
     })
   } 
 
