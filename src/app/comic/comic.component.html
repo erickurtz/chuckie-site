@@ -1,7 +1,15 @@
-<div> 
-   <h2>{{comic.title | uppercase }} </h2>
-   <div><img src = {{comic.path}}></div>
-   <div>
+<div class = "comic-container"> 
+   <div class = "comic-info">
+      <div class = "comic-title"> 
+         {{comic.title | uppercase }}
+         </div>
+      <div class = "comic-date"> 
+         {{comic.created | date }} 
+      </div>
+   </div>
+   
+   <div class = "comic-image"><img src = {{comic.path}}></div>
+   <div class = "nav-buttons">
       <button (click) = "previousComic()"> Previous </button>
       <button (click) = "randComic()"> Random </button> 
       <button (click) = "nextComic()"> Next </button>

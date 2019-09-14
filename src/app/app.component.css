@@ -6,7 +6,7 @@
   /* Style the links inside the navigation bar */
   .topnav a {
     float: right;
-    color: #f2f2f2;
+    color: #E0E0B0;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -16,7 +16,7 @@
   .title {
     float: left;
     text-align: center;
-    color: #f2f2f2;
+    color: #E0E0B0;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;

@@ -1,0 +1,29 @@
+.comic-info{ 
+    font-size: 30px; 
+    display: flex;
+    justify-content: space-around;
+}
+
+.comic-container{ 
+    margin: 0 auto; 
+    width: 1000px; /*this should be size of comic image*/ 
+
+}
+
+img{
+    max-width: 75%;
+    margin: 0 auto;
+    display: block;
+}
+
+
+
+.nav-buttons{
+    text-align: center;
+
+}
+
+button{
+    padding: 2% 2%;
+}
+
