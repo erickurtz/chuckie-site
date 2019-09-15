@@ -1,7 +1,11 @@
 
 <div class = "topnav"> 
-  <div class = "title">CHUCKIE THE CAT</div>
-  <a routerLink="/comics">Comics</a> 
-  <a routerLink="/archive">Comic Archive</a>
+  <div class = "title">
+    <a routerLink='comics/latest'> CHUCKIE THE CAT</a>
+  </div>
+  <div class = "tabs">
+    <a routerLink="/archive">Comic Archive</a>
+    <a routerLink="/comics">Comics</a> 
+  </div>
 </div> 
 <router-outlet></router-outlet>

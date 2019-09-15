@@ -6,7 +6,8 @@
 
 .comic-container{ 
     margin: 0 auto; 
-    width: 1000px; /*this should be size of comic image*/ 
+    width: 1000px; /*this should be size of comic image*/   
+
 
 }
 
@@ -20,10 +21,11 @@ img{
 
 .nav-buttons{
     text-align: center;
+    margin-top: 1%; 
 
 }
 
 button{
-    padding: 2% 2%;
+    /* padding: 2% 2%; */
 }
 

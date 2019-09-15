@@ -1,0 +1,34 @@
+.list-container, .info{
+    display: grid;
+    grid-template-columns: 10% 10%; 
+    margin-bottom: 0; 
+}
+
+.comic-title{
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.comic-created{
+    grid-column: 3;
+    grid-row: 2;
+}
+.comic-published{ 
+    grid-column: 2;
+    grid-row: 2;
+} 
+
+.title{ 
+    grid-column: 1; 
+    grid-row: 1; 
+}
+
+.created{ 
+    grid-column: 2; 
+    grid-row: 1; 
+}
+
+.published{ 
+    grid-column: 3; 
+    grid-row: 1; 
+}

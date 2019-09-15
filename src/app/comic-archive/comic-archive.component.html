@@ -1,8 +1,22 @@
 <h2> Comics Archive </h2>
-<ul class = "Comics">
-    <li *ngFor="let comic of comics" (click)="onSelect(comic)">
-        <a routerLink="/comics/{{comic.id}}">
-            <span>{{comic.id}}</span> {{comic.title}}
-        </a>
-    </li>
-</ul>
+<div class = "Comics">
+    <div class = "info">
+        <div class = "title">Title</div>
+        <div class = "created">Created</div>
+        <div class =  "published">Published</div> 
+    </div>
+
+    <div class = "list-container" *ngFor="let comic of comics" (click)="onSelect(comic)">
+        <div class = "comic-title">
+                <a routerLink="/comics/{{comic.id}}">
+                <span> {{comic.title}} </span>
+            </a>
+        </div>
+        <div class = "comic-published">
+            {{comic.published | date}}
+        </div>
+        <div class = "comic-created">
+            {{comic.created | date }}
+        </div>
+    </div>
+</div>
