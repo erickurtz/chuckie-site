@@ -1,9 +1,16 @@
+body{
+    font-family: 'Courier New', Courier, monospace; 
+    background-color: #605B5B; 
+  }
+
 .topnav {
-    background-color: #333;
-    overflow: hidden;
+  background-color: #333;
+  overflow: hidden;
+  padding-bottom: 10px;
+  background-clip: content-box;
   }
   
-  /* Style the links inside the navigation bar */
+/* Style the links inside the navigation bar */
   .tabs a {
     float: right;
     color: #E0E0B0;
@@ -19,7 +26,7 @@
     color: #E0E0B0;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 20px;
     font-style: normal;
     font-weight: bold;
   }
@@ -39,3 +46,11 @@
     background-color: #4CAF50;
     color: white;
   }
+
+button {
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 1.25%;
+  border-color: #333
+}

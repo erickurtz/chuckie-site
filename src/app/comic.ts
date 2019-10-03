@@ -1,9 +1,9 @@
-export class Comic{ 
+export interface Comic{ 
     id: number;
     title: string; 
     path: string;
-    published: Date = new Date(); 
-    created: Date = new Date();  
+    published: Date;
+    created: Date; 
 
 
     
