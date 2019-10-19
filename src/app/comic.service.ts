@@ -15,24 +15,31 @@ const dbUrl = 'http://127.0.0.1:5000/comics/';
 })
 export class ComicService {
 
+  navs: string[] = []; 
 
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) { 
+    this.navs = ["banana","cat-1", "cat-2"]; //temporary 
+  }
+
+  populate(navs: string []){
+    this.navs = navs; 
+  }
+
+  getNavs(): Observable<string[]>{
+      return of(this.navs);
+  }
 
   getComics(): Observable<Comic[]> { 
     return of(COMICS); 
   }
 
-  getComic(id: number): Observable<Comic> { 
-    console.log("test test test test"
-    )
-    this.http.get(dbUrl+ id).subscribe((res)=>{ 
-      console.log(res);
-    });
-    //return of(COMICS.find( comic => comic.id === id)); 
-    return this.http.get(dbUrl+ id).pipe(map(res =>{ 
+  getComic(nav: string): Observable<Comic> { 
+    /*return this.http.get(dbUrl+ nav).pipe(map(res =>{ 
      return res as Comic;
-    }))
+    }))*/
+    return of(COMICS.find(comic => comic.nav ===nav));
   }
 
    /* getComic(id: number): Observable<Comic> { 
@@ -40,7 +47,7 @@ export class ComicService {
   } */
 
   getTotal(): Observable <number> {
-    return of(COMICS.length);
+    return of(this.navs.length);
   }
 
  /* private extractComicFromResponse(res: Response): Comic{

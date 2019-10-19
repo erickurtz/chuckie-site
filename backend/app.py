@@ -10,9 +10,11 @@ mongo = PyMongo(app)
 
 @app.route("/comics/<int:id>")
 @cross_origin()
-def get_comic(id):
-    comic = mongo.db.comics.find_one({"_id": id})
-    return jsonify(comic)
+def get_comic(nav):
+    comic = mongo.db.comics.find_one({"nav": nav})
+    reponse = flask.jsonify(comic)
+    response.headers.add('Access-Control-Allow-Origin','*')
+    return response
 
 
 

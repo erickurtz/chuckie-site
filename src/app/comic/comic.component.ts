@@ -14,6 +14,8 @@ export class ComicComponent implements OnInit {
 
   comic: Comic;
   numComics: number; 
+  currNavs: string [];
+  currIndex: number; 
 
   constructor(
     private route: ActivatedRoute, 
@@ -24,44 +26,62 @@ export class ComicComponent implements OnInit {
     { }
 
   ngOnInit() {
-    this.comicService.getTotal()
-      .subscribe( total => this.numComics = total); 
-    this.getComic();
-
+    this.comicService.getNavs()
+    .subscribe( navs => {
+      this.currNavs = navs;
+      this.numComics = this.currNavs.length;
+      });
+    console.log(this.currNavs); 
+    console.log(this.numComics);
+    this.getComic(); 
   }
 
 
 
-
+  //this is ugly and i hate myself for writing it 
   getComic(){
     this.route.paramMap.subscribe(params=> { 
-      const curr_id = +params.get('id'); 
-      if(!curr_id){
-        this.comicService.getComic(this.numComics)
-        .subscribe(comic => this.comic = comic);
+      const curr_nav = params.get('nav');
+      console.log ("curr_nav is" curr_nav); 
+    if(curr_nav){
+        this.comicService.getComic(curr_nav)
+        .subscribe(comic => {
+          
+          this.comic = comic;
+          this.currIndex = this.currNavs.indexOf(curr_nav); 
+        });
+
+       //probably inefficient. check later
       }else{
-        this.comicService.getComic(curr_id)
-        .subscribe(comic => this.comic = comic);
-      }
+        this.comicService.getComic(this.currNavs[this.currNavs.length-1])
+        .subscribe(comic =>{ 
+          this.comic = comic; 
+          console.log(comic.title);
+          this.currIndex = this.currNavs.length-1;
+        });
+      }  
+    });
      
-    })
+    
   } 
 
   previousComic(){
-    let next = this.comic.id -1; 
-    if (next >= 1) this.router.navigateByUrl('/comics/' + next); 
+    let next = this.currIndex -1; 
+    console.log("prev is" + next);
+    console.log(this.currNavs[next]);
+    if (next >= 0) this.router.navigateByUrl('/comics/' + this.currNavs[next]); 
   }
   
 
   nextComic(){
-    let next = this.comic.id + 1; 
-    console.log("total comics " + this.numComics); 
-    if(next<=this.numComics) this.router.navigateByUrl('/comics/' + next); 
+    let next = this.currIndex + 1; 
+    console.log("next is" + next);
+    if(next<this.numComics) this.router.navigateByUrl('/comics/' + this.currNavs[next]); 
   }
 
   randComic(){ 
     let next =  Math.ceil(Math.random() * (this.numComics)); 
-    this.router.navigateByUrl('/comics/' + next); 
+    this.router.navigateByUrl('/comics/' + this.currNavs[next]); 
 
   }
 
