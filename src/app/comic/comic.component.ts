@@ -42,7 +42,7 @@ export class ComicComponent implements OnInit {
   getComic(){
     this.route.paramMap.subscribe(params=> { 
       const curr_nav = params.get('nav');
-      console.log ("curr_nav is" curr_nav); 
+      console.log ("curr_nav is" + curr_nav); 
     if(curr_nav){
         this.comicService.getComic(curr_nav)
         .subscribe(comic => {
@@ -53,6 +53,7 @@ export class ComicComponent implements OnInit {
 
        //probably inefficient. check later
       }else{
+        console.log("no curr nav!") 
         this.comicService.getComic(this.currNavs[this.currNavs.length-1])
         .subscribe(comic =>{ 
           this.comic = comic; 
@@ -80,7 +81,8 @@ export class ComicComponent implements OnInit {
   }
 
   randComic(){ 
-    let next =  Math.ceil(Math.random() * (this.numComics)); 
+    let next =  Math.ceil(Math.random() * (this.numComics))-1; 
+    console.log("idx of next"+ next)
     this.router.navigateByUrl('/comics/' + this.currNavs[next]); 
 
   }

@@ -6,14 +6,16 @@ app = Flask (__name__)
 
 app.config["MONGO_URI"] = "mongodb://localhost:27017/comics"
 app.config["CORS_HEADERS"] = 'Content-Type'
+
+cors = CORS(app, resources={r"/comics": {"origins":"http://localhost:4000"}})
 mongo = PyMongo(app)
 
-@app.route("/comics/<int:id>")
-@cross_origin()
+@app.route("/comics/<string:nav>")
+@cross_origin(origin='localhost')
 def get_comic(nav):
     comic = mongo.db.comics.find_one({"nav": nav})
-    reponse = flask.jsonify(comic)
-    response.headers.add('Access-Control-Allow-Origin','*')
+    response = jsonify(comic)
+    ##response.headers.add('Access-Control-Allow-Origin','*')
     return response
 
 

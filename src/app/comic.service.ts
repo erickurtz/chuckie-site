@@ -36,10 +36,10 @@ export class ComicService {
   }
 
   getComic(nav: string): Observable<Comic> { 
-    /*return this.http.get(dbUrl+ nav).pipe(map(res =>{ 
+    return this.http.get(dbUrl+ nav).pipe(map(res =>{ 
      return res as Comic;
-    }))*/
-    return of(COMICS.find(comic => comic.nav ===nav));
+    }))
+    //return of(COMICS.find(comic => comic.nav === nav));
   }
 
    /* getComic(id: number): Observable<Comic> { 
