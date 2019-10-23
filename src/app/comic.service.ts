@@ -44,9 +44,7 @@ export class ComicService {
     return this.http.get(dbUrl+ id);
   } */
 
-  getTotal(): Observable <number> {
-    return of(this.navs.length);
-  }
+ 
 
  /* private extractComicFromResponse(res: Response): Comic{
     
