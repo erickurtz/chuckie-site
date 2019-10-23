@@ -20,15 +20,13 @@ export class ComicService {
 
 
   constructor(private http: HttpClient) { 
-    this.navs = ["banana","cat-1", "cat-2"]; //temporary 
   }
 
-  populate(navs: string []){
-    this.navs = navs; 
-  }
 
   getNavs(): Observable<string[]>{
-      return of(this.navs);
+    return this.http.get(dbUrl+"navs").pipe(map(res =>{
+      return res["navs"] as string[];
+    }));
   }
 
   getComics(): Observable<Comic[]> { 

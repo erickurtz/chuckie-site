@@ -26,6 +26,7 @@ export class ComicComponent implements OnInit {
     { }
 
   ngOnInit() {
+
     this.comicService.getNavs()
     .subscribe( navs => {
       this.currNavs = navs;
