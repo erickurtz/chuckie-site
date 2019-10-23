@@ -15,7 +15,6 @@ const dbUrl = 'http://127.0.0.1:5000/comics/';
 })
 export class ComicService {
 
-  navs: string[] = []; 
 
 
 
@@ -37,20 +36,9 @@ export class ComicService {
     return this.http.get(dbUrl+ nav).pipe(map(res =>{ 
      return res as Comic;
     }))
-    //return of(COMICS.find(comic => comic.nav === nav));
   }
 
-   /* getComic(id: number): Observable<Comic> { 
-    return this.http.get(dbUrl+ id);
-  } */
-
  
-
- /* private extractComicFromResponse(res: Response): Comic{
-    
-    
-    return 
-  } */
 
 }
 
