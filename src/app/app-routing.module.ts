@@ -8,7 +8,7 @@ const routes: Routes =  [
   {path: '', redirectTo: 'comics/latest', pathMatch: 'full'}, 
   {path: 'comics', redirectTo: 'comics/latest', pathMatch:'full'},
   {path: 'comics/latest', component: ComicComponent},
-  {path: 'comics/:id', component: ComicComponent},
+  {path: 'comics/:nav', component: ComicComponent},
   {path: 'archive', component: ComicArchiveComponent}
 
 

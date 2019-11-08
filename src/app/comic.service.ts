@@ -17,37 +17,28 @@ export class ComicService {
 
 
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) { 
+  }
+
+
+  getNavs(): Observable<string[]>{
+    return this.http.get(dbUrl+"navs").pipe(map(res =>{
+      return res["navs"] as string[];
+    }));
+  }
 
   getComics(): Observable<Comic[]> { 
     return of(COMICS); 
   }
 
-  getComic(id: number): Observable<Comic> { 
-    console.log("test test test test"
-    )
-    this.http.get(dbUrl+ id).subscribe((res)=>{ 
-      console.log(res);
-    });
-    //return of(COMICS.find( comic => comic.id === id)); 
-    return this.http.get(dbUrl+ id).pipe(map(res =>{ 
+  getComic(nav: string): Observable<Comic> { 
+    return this.http.get(dbUrl+ nav).pipe(map(res =>{ 
      return res as Comic;
     }))
   }
 
-   /* getComic(id: number): Observable<Comic> { 
-    return this.http.get(dbUrl+ id);
-  } */
-
-  getTotal(): Observable <number> {
-    return of(COMICS.length);
-  }
-
- /* private extractComicFromResponse(res: Response): Comic{
-    
-    
-    return 
-  } */
+ 
 
 }
 
