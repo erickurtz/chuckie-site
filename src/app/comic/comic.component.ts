@@ -31,10 +31,12 @@ export class ComicComponent implements OnInit {
     .subscribe( navs => {
       this.currNavs = navs;
       this.numComics = this.currNavs.length;
+      console.log(this.currNavs); 
+      console.log(this.numComics);
+      this.getComic(); 
       });
-    console.log(this.currNavs); 
-    console.log(this.numComics);
-    this.getComic(); 
+  
+   
   }
 
 
@@ -55,6 +57,7 @@ export class ComicComponent implements OnInit {
        //probably inefficient. check later
       }else{
         console.log("no curr nav!") 
+        console.log(this.currNavs.length-1); 
         this.comicService.getComic(this.currNavs[this.currNavs.length-1])
         .subscribe(comic =>{ 
           this.comic = comic; 
