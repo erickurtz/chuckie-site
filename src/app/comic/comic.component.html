@@ -1,5 +1,8 @@
 
+
+
 <div class = "comic-container">
+  
    <div class = "comic-info">
       <div class = "comic-title"> 
          {{comic.title | uppercase }}
@@ -9,17 +12,17 @@
           Date here
       </div>
    </div>
-   
-  <!--- <div class = "comic-image"><img src = {{comic.path}}></div>-->
-   <div class = "comic-image"><img class = "comic" 
-      src = "../../assets/fear001.jpg"></div>
+   <div class = "chuckie-side">
+         <img class ="chuckie-img" src = '../../assets/chuckie-zombie-right.png'>
+   </div>
+    
+  
+   <img src = {{comic.path}} class = "comic-image">
    <div class = "nav-buttons">
       <button (click) = "previousComic()"> Previous </button>
       <button (click) = "randComic()"> Random </button> 
       <button (click) = "nextComic()"> Next </button>
    </div>
+  
 </div>
 
-<div class = "chuckie-side">
-   <img class ="chuckie-img" src = '../../assets/chuckie-zombie-right.png'>
-</div>

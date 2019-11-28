@@ -7,20 +7,17 @@
 
 
 .comic-image{
-    max-width: 100%;
-    margin: 0 auto;
-    display: block;
+    margin: auto;
+    width: 100%;
+    size: 90%;
     border: 3px solid;
     border-color:  #E0E0B0;
 }
 
-.comic{
-    width: 100%;
-}
 
 .comic-container{ 
     width: 50%;
-    margin: 0 auto;  /*this should be size of comic image*/   
+    margin: 0 auto; 
     height: 100%;
 
 }
@@ -28,15 +25,17 @@
 .nav-buttons{
     text-align: center;
     margin-top: 1%; 
+    z-index: 0;
 
 }
 
 .chuckie-side{
- 
     position: fixed;
-    padding-left: 72%;
+    z-index: -1; 
+    padding-left: 50%;
     bottom: 0;
-    max-width: 30%;
+    max-width: 30%; 
+    
 }
 
 .chuckie-img{

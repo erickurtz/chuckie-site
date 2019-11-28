@@ -26,7 +26,9 @@ export class ComicComponent implements OnInit {
     { }
 
   ngOnInit() {
-
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
     this.comicService.getNavs()
     .subscribe( navs => {
       this.currNavs = navs;
@@ -74,7 +76,8 @@ export class ComicComponent implements OnInit {
     let next = this.currIndex -1; 
     console.log("prev is" + next);
     console.log(this.currNavs[next]);
-    if (next >= 0) this.router.navigateByUrl('/comics/' + this.currNavs[next]); 
+    if (next >= 0) this.router.navigateByUrl('/comics/' + this.currNavs[next]);
+  
   }
   
 
