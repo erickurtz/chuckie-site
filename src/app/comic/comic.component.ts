@@ -51,7 +51,7 @@ export class ComicComponent implements OnInit {
     if(curr_nav){
         this.comicService.getComic(curr_nav)
         .subscribe(comic => {
-          
+          comic
           this.comic = comic;
           this.currIndex = this.currNavs.indexOf(curr_nav); 
         });

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { Comic } from './comic';
-import { COMICS } from './mock-comic';
 import { Observable, of } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { HttpClient, HttpClientModule } from '@angular/common/http'
@@ -28,9 +27,6 @@ export class ComicService {
     }));
   }
 
-  getComics(): Observable<Comic[]> { 
-    return of(COMICS); 
-  }
 
   getComic(nav: string): Observable<Comic> { 
     return this.http.get(dbUrl+ nav).pipe(map(res =>{ 

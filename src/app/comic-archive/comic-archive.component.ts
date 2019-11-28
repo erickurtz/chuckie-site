@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { COMICS } from '../mock-comic';
 import { Comic } from '../comic';
 import { ComicService } from '../comic.service'; 
 
@@ -10,12 +9,12 @@ import { ComicService } from '../comic.service';
 })
 export class ComicArchiveComponent implements OnInit {
 
-  comics: Comic []; 
+  navs: string []; 
 
   constructor(private comicService: ComicService) { }
 
   ngOnInit() {
-    this.getComics();
+    this.getNavs();
   
   }
  
@@ -24,9 +23,9 @@ export class ComicArchiveComponent implements OnInit {
 
   }
 
-  getComics(): void { 
-    this.comicService.getComics()
-      .subscribe(comics => this.comics = comics); 
+  getNavs(): void { 
+    this.comicService.getNavs()
+      .subscribe(navs => this.navs = navs); 
   }
 
 
