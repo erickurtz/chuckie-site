@@ -134,3 +134,6 @@ ENV/
 .idea/
 *.iml
 .DS_Store
+
+#constants
+constants.ts

@@ -5,9 +5,10 @@ import { Observable, of } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { strictEqual } from 'assert';
+import { dbUrl } from './constants';
 
 
-const dbUrl = 'http://127.0.0.1:5000/comics/';
+const currUrl = dbUrl;
 
 @Injectable({
   providedIn: 'root'
