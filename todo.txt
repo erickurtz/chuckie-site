@@ -1,0 +1,11 @@
+in order of (supposed) importance
+
+- serve static files in nginx + replace paths in mongo
+- tests in angular
+- mock service (for testing)
+- replace backend with PostGRESql
+- dockerize everything
+- ci/cd (related to above)
+- refactor angular observables
+- fix buttons
+
