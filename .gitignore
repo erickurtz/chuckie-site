@@ -137,3 +137,6 @@ ENV/
 
 #constants
 constants.ts
+
+#images 
+scanned_comics/
