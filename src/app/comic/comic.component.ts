@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { ComicService } from '../comic.service'; 
 import { Comic } from '../comic'
 import { PARAMETERS } from '@angular/core/src/util/decorators';
+import { map, flatMap } from 'rxjs/operators'; 
 
 @Component({
   selector: 'app-comic',
@@ -33,64 +34,51 @@ export class ComicComponent implements OnInit {
     .subscribe( navs => {
       this.currNavs = navs;
       this.numComics = this.currNavs.length;
-      console.log(this.currNavs); 
-      console.log(this.numComics);
       this.getComic(); 
       });
   
    
   }
+//todo: fix the unholy way you handle currIndex lmao wtf is wrong with you 
 
-
-
-  //this is ugly and i hate myself for writing it 
   getComic(){
-    this.route.paramMap.subscribe(params=> { 
-      const curr_nav = params.get('nav');
-      console.log ("curr_nav is" + curr_nav); 
-    if(curr_nav){
-        this.comicService.getComic(curr_nav)
-        .subscribe(comic => {
-          comic
-          this.comic = comic;
-          this.currIndex = this.currNavs.indexOf(curr_nav); 
-        });
-
-       //probably inefficient. check later
-      }else{
-        console.log("no curr nav!") 
-        console.log(this.currNavs.length-1); 
-        this.comicService.getComic(this.currNavs[this.currNavs.length-1])
-        .subscribe(comic =>{ 
-          this.comic = comic; 
-          console.log(comic.title);
-          this.currIndex = this.currNavs.length-1;
-        });
+    this.route.paramMap.subscribe(params => { 
+      var curr_nav = params.get('nav');
+      if (!curr_nav) {
+        curr_nav = this.currNavs[this.currNavs.length-1]
+        this.currIndex = this.currNavs.indexOf(curr_nav); 
       }  
+      this.comicService.getComic(curr_nav).subscribe(comic => { 
+        this.comic = comic;
+        if (this.currNavs[this.currIndex]!=curr_nav) this.currIndex = this.currNavs.indexOf(curr_nav);
+
+      })
     });
-     
-    
-  } 
+
+  }
 
   previousComic(){
     let next = this.currIndex -1; 
-    console.log("prev is" + next);
-    console.log(this.currNavs[next]);
-    if (next >= 0) this.router.navigateByUrl('/comics/' + this.currNavs[next]);
+    if (next >= 0){
+      this.router.navigateByUrl('/comics/' + this.currNavs[next]);
+      this.currIndex = next; 
+    } 
   
   }
   
 
   nextComic(){
     let next = this.currIndex + 1; 
-    console.log("next is" + next);
-    if(next<this.numComics) this.router.navigateByUrl('/comics/' + this.currNavs[next]); 
+    if(next<this.numComics){
+      this.router.navigateByUrl('/comics/' + this.currNavs[next]); 
+      this.currIndex = next; 
+    } 
   }
 
   randComic(){ 
     let next =  Math.ceil(Math.random() * (this.numComics))-1; 
-    console.log("idx of next"+ next)
-    this.router.navigateByUrl('/comics/' + this.currNavs[next]); 
+    this.router.navigateByUrl('/comics/' + this.currNavs[next]);
+    this.currIndex = next;  
 
   }
 
