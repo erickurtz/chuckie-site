@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { ComicService } from '../comic.service'; 
 import { Comic } from '../comic'
-import { PARAMETERS } from '@angular/core/src/util/decorators';
+import { PARAMETERS } from '@angular/core';
 import { map, flatMap } from 'rxjs/operators'; 
 
 @Component({
