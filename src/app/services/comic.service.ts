@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 
-import { Comic } from './comic';
+import { Comic } from '../comic';
 import { Observable, of } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { strictEqual } from 'assert';
-import { dbUrl } from './constants';
+import { dbUrl } from '../constants';
 
 
 const currUrl = dbUrl;
