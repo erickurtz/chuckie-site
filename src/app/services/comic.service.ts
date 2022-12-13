@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Comic } from '../comic';
+import { Comic } from '../models/comic';
 import { Observable, of } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { HttpClient, HttpClientModule } from '@angular/common/http'
