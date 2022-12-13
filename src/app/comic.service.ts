@@ -15,9 +15,6 @@ const currUrl = dbUrl;
 })
 export class ComicService {
 
-
-
-
   constructor(private http: HttpClient) { 
   }
 

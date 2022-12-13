@@ -135,8 +135,5 @@ ENV/
 *.iml
 .DS_Store
 
-#constants
-constants.ts
-
 #images 
 scanned_comics/

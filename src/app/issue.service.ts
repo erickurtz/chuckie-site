@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Issue } from './issue';
-import { dbUrl } from './constants';
 import { Observable, of} from 'rxjs'; 
 import { ISSUES }   from './mock-issues';
 @Injectable({
